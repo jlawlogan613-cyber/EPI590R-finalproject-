@@ -2,6 +2,7 @@
 title: "Final project_pequins"
 format: html
 editor: visual
+theme: minty
 ---
 
 ## Quarto
@@ -33,7 +34,7 @@ many_penguins <- read_csv(
 
 # Characteristics of Different Species of Penguins 
 
-Brief summary of data: This data originated from GitHub and looks at 94 penguins and recorded characteristics about them. There were 18 different species. Sex, Genus, and Shortname were the catergoical variables that were recorded and then the other variables were physical characteristics about the penguins which were beak length (culmen), beak length (nares), beak width, beak depth, tarsus length, wing length, kipps distance, secondary 1, hand wing index, and tail length.
+Brief summary of data: This data originated from GitHub and looks at 94 penguins and recorded characteristics about them. There were 18 different species. Sex, Genus, and Shortname were the categorical variables that were recorded and then the other variables were physical characteristics about the penguins which were beak length (culmen), beak length (nares), beak width, beak depth, tarsus length, wing length, kipps distance, secondary 1, hand wing index, and tail length.
 
 link: <https://github.com/rfordatascience/tidytuesday/commit/7489888351e5cc61e04ae6ad300884a4c7f37166#diff-202263137048da8be9fa4a055df098ecfb23a0438215c45d61d292c7200d3405>
 
@@ -167,10 +168,3 @@ Ratio_beak(	x = many_penguins1$wing.length,
 
 
 ```
-
-# 
-
-```         
-```
-
-The `echo: false` option disables the printing of code (only output is displayed).
