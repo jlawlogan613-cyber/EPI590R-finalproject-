@@ -36,8 +36,10 @@ many_penguins <- read_csv(
 
 ```{r}
 #| echo: false
+#| label: tbl-one
+#| tbl-cap: "Table summary stratified by peguin species"
 
-tbl_summary(
+tbl_one <- tbl_summary(
 	many_penguins,
 	by = species, 
 	include = c(
@@ -61,44 +63,42 @@ tbl_summary(
 	missing_text = "Missing"
 )
 
-
+tbl_one
 
 ```
 
 2.  Fit a regression and present well-formatted results from the regression (1 pt) The regression doesn’t have to be of any particular scientific interest, and you don’t have to interpret it in any particular way You may use {gtsummary} or {broom} or both
 
-# Regression Table 
-
 Univariate linear regressions highlighting whether certain physical measurements of pequins (beak width, beak length, wing length, and tail length) differ between Female and Male penguins with Male as the reference group
 
 ```{r}
 #| echo: false
-
+#| label: tbl-two
+#| tbl-cap: "Univariate regression table"
 many_penguins1 <- many_penguins |> 
-  mutate(
-    sex = case_when(
-      sex %in% c(1, "1", "Male", "M") ~ "Male",
-      sex %in% c(2, "2", "Female", "F") ~ "Female",
-      sex %in% c("U", "Unknown", "U") ~ NA_character_,
-      TRUE ~ NA_character_
-    ),
-    sex = factor(sex, levels = c("Male", "Female"))
-  ) |> 
-  type_convert()
+	mutate(
+		sex = case_when(
+			sex %in% c(1, "1", "Male", "M") ~ "Male",
+			sex %in% c(2, "2", "Female", "F") ~ "Female",
+			sex %in% c("U", "Unknown", "U") ~ NA_character_,
+			TRUE ~ NA_character_
+		),
+		sex = factor(sex, levels = c("Male", "Female"))
+	) |> 
+	type_convert()
 
 sex_penguin_table <- tbl_uvregression(
- many_penguins1,
-  x = sex,
-  include = c(
-    beak.width,
-    beak.depth,
-    wing.length,
-    tail.length
-  ), 
- method=lm
+	many_penguins1,
+	x = sex,
+	include = c(
+		beak.width,
+		beak.depth,
+		wing.length,
+		tail.length
+	), 
+	method=lm
 )
 sex_penguin_table
-
 
 ```
 
@@ -114,10 +114,23 @@ plot_hist <- function(many_penguins1, beak.depth) {
 		theme_minimal()
 }
 
+```
+
+```{r}
+#| echo: false
+#| label: Figure_1
+#| tbl-cap: "G-plot of beak depth"
 plot_hist(many_penguins1,beak.depth )
-plot_hist(many_penguins1,tail.length )
+```
 
+```{r}
+#| echo: false
+#| label: Figure_2
+#| tbl-cap: "G-plot of beak length"
+Figure_2 <- plot_hist(many_penguins1,tail.length )
+```
 
+```{}
 ```
 
 Function: a function that can get the average ratio of each continous variable
