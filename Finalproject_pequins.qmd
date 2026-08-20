@@ -120,6 +120,30 @@ plot_hist(many_penguins1,tail.length )
 
 ```
 
+Function: a function that can get the average ratio of each continous variable
+
+```{r}
+#| echo: false
+
+Ratio_beak<- function (x,y) { 
+		ratio <- x/y
+		mean_ratio <- (mean(ratio, na.rm = TRUE))
+		return(mean_ratio) 
+}
+
+Ratio_beak(
+	x = many_penguins1$beak.width, 
+	y = many_penguins1$beak.depth
+)
+
+Ratio_beak(	x = many_penguins1$wing.length, 
+						y = many_penguins1$tail.length
+)
+	
+
+
+```
+
 # 
 
 ```         
