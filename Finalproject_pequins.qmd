@@ -19,19 +19,12 @@ library(tidyverse)
 library (gtsummary)
 library(janitor)
 
+library(tidyverse)
 
-```
-
-```{r}
-#| echo: false
-library(readr)
-many_penguins <- read_csv("Final project /many_penguins.csv")
-
-```
-
-```{r}
-#| echo: false
-many_penguins <- read_csv("Final project /many_penguins.csv")
+many_penguins <- read_csv(
+	here::here("many_penguins.csv"),
+	na = c("", "NA", "N/A", "-998")
+)
 
 ```
 
@@ -71,12 +64,55 @@ tbl_summary(
 
 ```
 
+2.  Fit a regression and present well-formatted results from the regression (1 pt) The regression doesn’t have to be of any particular scientific interest, and you don’t have to interpret it in any particular way You may use {gtsummary} or {broom} or both
+
+# Regression Table 
+
+Univariate linear regressions highlighting whether certain physical measurements of pequins (beak width, beak length, wing length, and tail length) differ between Female and Male penguins with Male as the reference group
+
+```{r}
+#| echo: false
+
+many_penguins1 <- many_penguins |> 
+  mutate(
+    sex = case_when(
+      sex %in% c(1, "1", "Male", "M") ~ "Male",
+      sex %in% c(2, "2", "Female", "F") ~ "Female",
+      sex %in% c("U", "Unknown", "U") ~ NA_character_,
+      TRUE ~ NA_character_
+    ),
+    sex = factor(sex, levels = c("Male", "Female"))
+  ) |> 
+  type_convert()
+
+sex_penguin_table <- tbl_uvregression(
+ many_penguins1,
+  x = sex,
+  include = c(
+    beak.width,
+    beak.depth,
+    wing.length,
+    tail.length
+  ), 
+ method=lm
+)
+sex_penguin_table
+
+
+```
+
+```{r}
+
+```
+
 ```{r}
 
 
 ```
 
-```{}
+# 
+
+```         
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
