@@ -1,0 +1,82 @@
+---
+title: "Final project_pequins"
+format: html
+editor: visual
+---
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+#| echo: false
+
+library(tidyverse)
+library (gtsummary)
+library(janitor)
+
+
+```
+
+```{r}
+#| echo: false
+library(readr)
+many_penguins <- read_csv("Final project /many_penguins.csv")
+
+```
+
+```{r}
+#| echo: false
+many_penguins <- read_csv("Final project /many_penguins.csv")
+
+```
+
+```{r}
+```
+
+1.  Create a `{gtsummary}` table of descriptive statistics about your data (1 pt)
+
+```{r}
+#| echo: false
+
+tbl_summary(
+	many_penguins,
+	by = species, 
+	include = c(
+		beak.length_culmen, sex, genus, beak.length_nares, beak.width, 
+		beak.depth, tarsus.length, wing.length, kipps.distance, 
+		secondary1, `hand-wing.index`, tail.length
+	),
+	
+	label = list(
+		beak.length_culmen ~ "Length from the tip of the beak to the base of the skull (mm)",
+		beak.length_nares ~ "Length from the anterior edge of the nostrils to the tip of the beak (mm)",
+		beak.width ~ "Width of beak (mm)",
+		beak.depth ~ "Depth of beak (mm)", # Extra comma removed here
+		tarsus.length ~ "Length of a bird’s lower leg bone (mm)",
+		wing.length ~ "Length of the wing (mm)",
+		kipps.distance ~ "Length from the tip of the first secondary feather to the tip of the longest primary (mm)",
+		secondary1 ~ "Length from the bend of the wing to the tip of the first secondary (mm)",
+		`hand-wing.index` ~ "Kipp’s distance corrected for wing size (mm)", # Backticks added around hand-wing.index
+		tail.length ~ "Length of tail (mm)"
+	),
+	missing_text = "Missing"
+)
+
+
+
+```
+
+```{r}
+
+
+```
+
+```{}
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
