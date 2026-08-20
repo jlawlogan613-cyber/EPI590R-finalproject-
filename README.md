@@ -57,6 +57,11 @@ many_penguins1 <- many_penguins |>
 ***This is where i used AI because it was very difficult for me to understand how to mutate the sex variable to just be male and female. There were many different labels for it such as F,M, and U for unknown so I asked AI 
 to explain how to make a code to re-label the sex variable so i could make a regression table. 
 
+
+<img width="663" height="512" alt="Screen Shot 2026-08-20 at 5 07 15 PM" src="https://github.com/user-attachments/assets/dba7890d-433a-4f77-b555-15da93f4b2a5" />
+
+
+
 sex_penguin_table <- tbl_uvregression(
 	many_penguins1,
 	x = sex,
