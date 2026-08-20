@@ -18,6 +18,7 @@ When you click the **Render** button a document will be generated that includes 
 library(tidyverse)
 library (gtsummary)
 library(janitor)
+library(ggplot2)
 
 library(tidyverse)
 
@@ -101,11 +102,20 @@ sex_penguin_table
 
 ```
 
-```{r}
-
-```
+Create a figure (1 pt)
 
 ```{r}
+#| echo: false
+
+
+plot_hist <- function(many_penguins1, beak.depth) {
+	ggplot(many_penguins1, aes(x = {{ beak.depth }})) +
+		geom_histogram(bins = 30) +
+		theme_minimal()
+}
+
+plot_hist(many_penguins1,beak.depth )
+plot_hist(many_penguins1,tail.length )
 
 
 ```
